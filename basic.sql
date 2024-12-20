@@ -22,4 +22,4 @@ create table tablesheet1(
     alter table tablesheet ;
     add column age int(3);
     update tablesheet set age = 20 where serial = 3 ; 
-    hello gg
+    okkk al rignt
