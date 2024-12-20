@@ -23,3 +23,4 @@ create table tablesheet1(
     add column age int(3);
     update tablesheet set age = 20 where serial = 3 ; 
     okkk al rignt
+ ss
