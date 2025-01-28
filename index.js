@@ -26,11 +26,15 @@ const User = sequelize.define('user', {
 {
     freezeTableName: true,
     tableName: 'table',
-    
+
 })
 
-User.sync().then((data)=> {
-    console.log('Table created successfully');
+User.sync({alert : true}).then((data)=> {
+    const user = User.build({username: "arif", password: "123"})
+    user.age = 45 ;
+    return user.save({field : ['age']})
+}).then((data) => {
+    console.log('User added data in database',)
 }).catch((err)=> {
     console.error('Unable to connect to the database:', err);
 })
