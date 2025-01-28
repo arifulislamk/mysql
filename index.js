@@ -29,20 +29,23 @@ const User = sequelize.define(
   }
 );
 
-User.sync({ alert: true })
+User.sync({ alter: true })
   .then(() => {
     return User.bulkCreate([
       { username: "dany", password: "password123" },
       { username: "Jane Doe", password: "password456" },
       { username: "Alice Johnson", password: "password789" },
     ]);
+  }).then((users) => {
+    const user = users[0];
+    user.age = 65
+    return user.save({fields : ['age']})
   }).then((data) => {
     console.log("User updated data in database");
   })
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
   });
-console.log("Table created successfully", sequelize.model.User);
 sequelize
   .authenticate()
   .then(() => {
