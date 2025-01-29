@@ -28,7 +28,15 @@ const User = sequelize.define(
     tableName: "table",
   }
 );
-
+User.sync({alter:true})
+.then(() =>{
+  return User.findAll() ;
+}).then((data)=> {
+  data.forEach((element)=> {
+    console.log(element.toJSON());
+  })
+})
+// insert data in database
 User.sync({ alter: true })
   .then(() => {
     return User.bulkCreate([
