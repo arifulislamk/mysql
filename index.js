@@ -29,7 +29,14 @@ const User = sequelize.define(
     tableName: "table",
   }
 );
-
+///inser data with save
+User.sync({alter: true})
+.then(()=> {
+  const user = User.build({username: "user", password: "password"})
+  return user.save()
+}).catch((err)=> {
+  console.error("Unable to connect to the database:", err);
+})
 //insert data in database
 // User.sync({ alter: true })
 //   .then(() => {
